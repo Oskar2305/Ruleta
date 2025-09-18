@@ -9,11 +9,25 @@ public class Casella {
         this.color = color;
     }
 
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
     @Override
     public String toString() {
-        return "Casella{" +
-                "num=" + num +
-                ", color='" + color + '\'' +
-                '}';
+        return num + " que és color " + color;
     }
+
 }

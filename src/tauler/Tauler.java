@@ -106,6 +106,14 @@ public class Tauler {
                         quantitat = n.nextDouble();
                         aux++;
                     }while((double) quantitat >= player.getMoney() || quantitat<=0);
+
+                    System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
+
+                    if (num==this.getCaselles()[tirada].getNum()){
+                        player.setMoney(player.getMoney()+quantitat);
+                        System.out.println("Has guanyat! ara tens: "+player.getMoney());
+                    }else{player.setMoney(player.getMoney()-quantitat);
+                        System.out.println("Has perdut..., ara tens: "+player.getMoney());}
                      break;
                 case 2:
                     int dotzena;
@@ -130,11 +138,12 @@ public class Tauler {
                         quantitat = n.nextDouble();
                         aux++;
                     }while((double) quantitat >= player.getMoney() || quantitat<=0);
+                    System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                     break;
 
                     // Seguir el tipo de apuesta (Color, menor o major y parell o imparell)
             }
-            System.out.println("La bola ha caigut a " + getCaselles()[tirada]);
+
 
 
     }
