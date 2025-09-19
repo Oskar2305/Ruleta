@@ -158,16 +158,16 @@ public class Tauler {
                 break;
 
             case 3:
-                int color;
+                String color;
                 aux = 0;
                 do {
                     if (aux > 0) {
-                        System.out.println("Introdueix un numero VALID (1/2)");
+                        System.out.println("Introdueix un color disponible (Red/Black)");
                     }
-                    System.out.println("Introdueix un número del 1 o 2, 1 = Vermell, 2 = Negre");
-                    color = n.nextInt();
+                    System.out.println("Introdueix a que apostes: Red/Black");
+                    color = n.next().toLowerCase();
                     aux++;
-                } while (color != 1 && color != 2);
+                } while (!color.equals("black") && !color.equals("red"));
 
                 aux = 0;
                 do {
@@ -180,6 +180,15 @@ public class Tauler {
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
+                if (this.getCaselles()[tirada].getColor().toLowerCase().equals(color)){
+                    System.out.println("Has guanyat " + quantitat*2 + "€");
+                    player.setMoney(player.getMoney()+quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }else {
+                    System.out.println("Has perdut " + quantitat + "€");
+                    player.setMoney(player.getMoney()-quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }
                 break;
 
             // Seguir el tipo de apuesta (Color, menor o major y parell o imparell)

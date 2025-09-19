@@ -16,16 +16,14 @@ public class Main {
         int aux=0;
         boolean continuar=true;
         try {
-            do {
+            while(continuar){
                 //System.out.println("Tens"+ player.getMoney()+"€");
-                if (aux>0){
-                    System.out.println("Vols parar de jugar?");
-                    System.out.println("Introdueix un \"1\" si introdueixes cualsevol altre cosa seguiras jugant" );
-                    continuar = (1==t.nextInt());
-                }
                 n.bet();
                 aux++;
-            }while(continuar);
+                System.out.println("Vols parar de jugar?");
+                System.out.println("Introdueix un \"1\" si introdueixes cualsevol altre cosa seguiras jugant" );
+                continuar = (1!=t.nextInt());
+            }
         } catch (Exception e) {
             throw new RuntimeException();
         }
