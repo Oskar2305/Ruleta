@@ -27,7 +27,7 @@ public class Main {
                 aux++;
             }while(continuar);
         } catch (Exception e) {
-
+            throw new RuntimeException();
         }
 
 
