@@ -3,6 +3,7 @@ package tauler;
 import jugador.Jugador;
 
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Tauler {
@@ -191,10 +192,107 @@ public class Tauler {
                 }
                 break;
 
-            // Seguir el tipo de apuesta (Color, menor o major y parell o imparell)
+            case 4:
+                int eleccio;
+                aux = 0;
+                do {
+                    if (aux > 0) {
+                        System.out.println("Introdueix un Valor disponible (1/2)");
+                    }
+                    System.out.println("Introdueix a que apostes: 1/2");
+                    System.out.println("1. Números del 1-18");
+                    System.out.println("2. Números del 19-36");
+                    try{
+                        eleccio = n.nextInt();
+                    } catch (Exception e) {
+                        throw new RuntimeException(e);
+                    }
+                    aux++;
+                } while (eleccio!=1 && eleccio!=2);
+
+                aux = 0;
+                do {
+                    System.out.println("Tens " + player.getMoney() + "€");
+                    if (aux > 0) {
+                        System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
+                    }
+                    System.out.println("Cuanta pasta vols apostar?");
+                    quantitat = n.nextDouble();
+                    aux++;
+                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
+                if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum())==eleccio){
+                    System.out.println("Has guanyat " + quantitat*2 + "€");
+                    player.setMoney(player.getMoney()+quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }else {
+                    System.out.println("Has perdut " + quantitat + "€");
+                    player.setMoney(player.getMoney()-quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }
+                break;
+
+            case 4:
+                int eleccio2=0;
+                aux = 0;
+                do {
+                    if (aux > 0) {
+                        System.out.println("Introdueix un Valor disponible (1/2)");
+                    }
+                    System.out.println("Introdueix a que apostes: 1/2");
+                    System.out.println("1. Números imparells");
+                    System.out.println("2. Números parells");
+                    try{
+                        eleccio2 = n.nextInt();
+                    } catch (Exception e) {
+
+                    }
+                    aux++;
+                } while (eleccio2!=1 && eleccio2!=2);
+
+                aux = 0;
+                do {
+                    System.out.println("Tens " + player.getMoney() + "€");
+                    if (aux > 0) {
+                        System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
+                    }
+                    System.out.println("Cuanta pasta vols apostar?");
+                    quantitat = n.nextDouble();
+                    aux++;
+                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
+                if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum())==eleccio){
+                    System.out.println("Has guanyat " + quantitat*2 + "€");
+                    player.setMoney(player.getMoney()+quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }else {
+                    System.out.println("Has perdut " + quantitat + "€");
+                    player.setMoney(player.getMoney()-quantitat);
+                    System.out.println("Ara tens " + player.getMoney() + "€");
+                }
+                break;
+            // Seguir el tipo de apuesta (parell o imparell)
         }
 
 
+    }
+
+
+    public int compararMenorOMajor(int numCasella){
+        int menorOMajor=0;
+        for (int i = 1; i <= 18; i++) {
+            if (numCasella == i) {
+                menorOMajor = 1;
+                return menorOMajor;
+            }
+        }
+        for (int i = 19; i <= 36; i++) {
+            if (numCasella == i) {
+                menorOMajor = 2;
+                return menorOMajor;
+            }
+        }
+        return menorOMajor;
     }
 
     public int compararDotzena(int numCasella) {
