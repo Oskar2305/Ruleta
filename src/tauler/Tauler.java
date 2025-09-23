@@ -74,7 +74,12 @@ public class Tauler {
             System.out.println("3. A color");
             System.out.println("4. A menor o major");
             System.out.println("5. A parell o imparell");
-            selectOpcio = n.nextInt();
+            try{
+                selectOpcio = n.nextInt();
+            }catch (InputMismatchException e){
+                throw new InputMismatchException();
+            }
+
             aux++;
         } while (selectOpcio > 5 || selectOpcio <= 0);
 
@@ -95,7 +100,12 @@ public class Tauler {
                         System.out.println("Introdueix un numero VALID (0-36)");
                     }
                     System.out.println("A quin número apostes:");
-                    num = n.nextInt();
+                    try{
+                        num = n.nextInt();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
+
                     aux++;
                 } while (num > 36 || num < 0);
                 aux = 0;
@@ -105,7 +115,12 @@ public class Tauler {
                         System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
                     }
                     System.out.println("Cuanta pasta vols apostar?");
-                    quantitat = n.nextDouble();
+                    try{
+                        quantitat = n.nextDouble();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
+
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
 
@@ -131,7 +146,12 @@ public class Tauler {
                     System.out.println("1. 1-12");
                     System.out.println("2. 13-24");
                     System.out.println("3. 25-36");
-                    dotzena = n.nextInt();
+                    try{
+                        dotzena = n.nextInt();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
+
                     aux++;
                 } while (dotzena > 3 || dotzena <= 0);
 
@@ -142,7 +162,11 @@ public class Tauler {
                         System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
                     }
                     System.out.println("Cuanta pasta vols apostar?");
-                    quantitat = n.nextDouble();
+                    try{
+                        quantitat = n.nextDouble();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
@@ -177,7 +201,11 @@ public class Tauler {
                         System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
                     }
                     System.out.println("Cuanta pasta vols apostar?");
-                    quantitat = n.nextDouble();
+                    try{
+                        quantitat = n.nextDouble();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
@@ -205,7 +233,7 @@ public class Tauler {
                     try{
                         eleccio = n.nextInt();
                     } catch (Exception e) {
-                        throw new RuntimeException(e);
+                        throw new InputMismatchException();
                     }
                     aux++;
                 } while (eleccio!=1 && eleccio!=2);
@@ -217,7 +245,11 @@ public class Tauler {
                         System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
                     }
                     System.out.println("Cuanta pasta vols apostar?");
-                    quantitat = n.nextDouble();
+                    try{
+                        quantitat = n.nextDouble();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
@@ -258,7 +290,11 @@ public class Tauler {
                         System.out.println("Introdueix una quantitat que tinguis, eres un pobre");
                     }
                     System.out.println("Cuanta pasta vols apostar?");
-                    quantitat = n.nextDouble();
+                    try{
+                        quantitat = n.nextDouble();
+                    }catch (InputMismatchException e){
+                        throw new InputMismatchException();
+                    }
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
