@@ -4,6 +4,5 @@ import java.awt.*;
 
 public class Grafic {
     private Panel finestra;
-    private Container subFinestra;
 
 }
