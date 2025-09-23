@@ -60,7 +60,7 @@ public class Tauler {
     }
 
     /*Metode utilitzat al main per jugar*/
-    public void bet() {
+    public void bet() throws Exception {
         Scanner n = new Scanner(System.in);
         int selectOpcio;
         int aux = 0;
@@ -76,7 +76,7 @@ public class Tauler {
             System.out.println("5. A parell o imparell");
             selectOpcio = n.nextInt();
             aux++;
-        } while (selectOpcio >= 5 || selectOpcio <= 0);
+        } while (selectOpcio > 5 || selectOpcio <= 0);
 
         /*Quantitat ha apostar*/
 
@@ -232,8 +232,8 @@ public class Tauler {
                 }
                 break;
 
-            case 4:
-                int eleccio2=0;
+            case 5:
+                int eleccio2 = 0;
                 aux = 0;
                 do {
                     if (aux > 0) {
@@ -261,7 +261,7 @@ public class Tauler {
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
-                if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum())==eleccio){
+                if (this.compararParell(this.getCaselles()[tirada].getNum())==eleccio2){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
                     player.setMoney(player.getMoney()+quantitat);
                     System.out.println("Ara tens " + player.getMoney() + "€");
@@ -277,6 +277,25 @@ public class Tauler {
 
     }
 
+
+    public int compararParell(int numCasella){
+        int parells=0;
+        if (numCasella!=0){
+            for (int i = 1 ; i <= 36; i++){
+                if (numCasella%2==0){
+                    parells = 2;
+                    return parells;
+                }
+                if (numCasella%2!=0){
+                    parells = 1;
+                    return parells;
+                }
+            }
+        }
+
+
+        return parells;
+    }
 
     public int compararMenorOMajor(int numCasella){
         int menorOMajor=0;
