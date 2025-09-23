@@ -242,11 +242,12 @@ public class Tauler {
                     System.out.println("Introdueix a que apostes: 1/2");
                     System.out.println("1. Números imparells");
                     System.out.println("2. Números parells");
-                    try{
-                        eleccio2 = n.nextInt();
-                    } catch (Exception e) {
+                        try {
+                            eleccio2 = n.nextInt();
+                        }catch (InputMismatchException e){
+                            throw new InputMismatchException();
+                        }
 
-                    }
                     aux++;
                 } while (eleccio2!=1 && eleccio2!=2);
 

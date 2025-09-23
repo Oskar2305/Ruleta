@@ -15,18 +15,20 @@ public class Main {
         Jugador player = new Jugador();
         int aux=0;
         boolean continuar=true;
-        try {
+
             while(continuar){
                 //System.out.println("Tens"+ player.getMoney()+"€");
+                try {
                 n.bet();
+                } catch (Exception e) {
+
+                }
                 aux++;
                 System.out.println("Vols parar de jugar?");
                 System.out.println("Introdueix un \"1\" si introdueixes cualsevol altre cosa seguiras jugant" );
                 continuar = (1!=t.nextInt());
             }
-        } catch (Exception e) {
-            throw new RuntimeException();
-        }
+
 
 
 
