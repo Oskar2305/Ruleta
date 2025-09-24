@@ -1,4 +1,4 @@
-package tauler;
+package joc;
 
 import jugador.Jugador;
 

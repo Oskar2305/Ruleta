@@ -1,9 +1,8 @@
 package main;
 
 import jugador.Jugador;
-import tauler.Tauler;
+import joc.Tauler;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or

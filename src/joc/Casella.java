@@ -1,4 +1,4 @@
-package tauler;
+package joc;
 
 public class Casella {
     private int num;
