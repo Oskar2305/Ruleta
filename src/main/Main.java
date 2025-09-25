@@ -15,7 +15,7 @@ public class Main {
         int aux=0;
         boolean continuar=true;
         while(continuar){
-            //System.out.println("Tens"+ player.getMoney()+"€");
+            System.out.println("Tens"+ player.getMoney()+"€");
             try {
                 n.bet();
             } catch (Exception e) {
@@ -24,7 +24,10 @@ public class Main {
             aux++;
             System.out.println("Vols parar de jugar?");
             System.out.println("Introdueix un \"1\" si introdueixes cualsevol altre cosa seguiras jugant");
-            continuar = (1 != t.nextInt());
+            int conf = t.nextInt();
+            if (conf==1){
+                continuar=false;
+            }
         }
     }
 }
