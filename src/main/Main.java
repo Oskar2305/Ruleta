@@ -15,7 +15,7 @@ public class Main {
         int aux=0;
         boolean continuar=true;
         while(continuar){
-            System.out.println("Tens"+ player.getMoney()+"€");
+            System.out.println("Tens "+ player.getMoney()+" €");
             try {
                 n.bet();
             } catch (Exception e) {
