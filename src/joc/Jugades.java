@@ -6,7 +6,7 @@ public class Jugades {
     }
 
     public static boolean jugaColor(Color colorEscollit, Color colorResult){
-        return false;
+        return colorEscollit == colorResult;
     }
 
     public static boolean jugaParell(int numEscollit, int result){
