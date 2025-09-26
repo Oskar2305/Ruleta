@@ -8,4 +8,10 @@ public class Jugades {
     public static boolean jugaColor(Color colorEscollit, Color colorResult){
         return false;
     }
+
+    public static boolean jugaParell(int numEscollit, int result){
+        return false;
+    }
+
+
 }
