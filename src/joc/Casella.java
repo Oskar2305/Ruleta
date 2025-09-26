@@ -2,9 +2,9 @@ package joc;
 
 public class Casella {
     private int num;
-    private String color;
+    private Color color;
 
-    public Casella(int num, String color) {
+    public Casella(int num, Color color) {
         this.num = num;
         this.color = color;
     }
@@ -17,11 +17,11 @@ public class Casella {
         this.num = num;
     }
 
-    public String getColor() {
+    public Color getColor() {
         return color;
     }
 
-    public void setColor(String color) {
+    public void setColor(Color color) {
         this.color = color;
     }
 
