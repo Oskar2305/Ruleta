@@ -2,48 +2,49 @@ package joc;
 
 import jugador.Jugador;
 
+import javax.swing.*;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Tauler {
     Jugador player = new Jugador();
-    private Casella[] caselles;
+    private final Casella[] caselles;
 
     public Tauler() {
         int i = 1;
         this.caselles = new Casella[37];
-        this.caselles[0] = new Casella(0, "Green");
+        this.caselles[0] = new Casella(0, Color.VERD);
         do {
 
-            this.caselles[i] = new Casella(i, "Red");
+            this.caselles[i] = new Casella(i, Color.VERMELL);
             i++;
             if (i <= 10) {
-                this.caselles[i] = new Casella(i, "Black");
+                this.caselles[i] = new Casella(i, Color.NEGRE);
                 i++;
             }
         } while (i <= 10);
         do {
-            this.caselles[i] = new Casella(i, "Black");
+            this.caselles[i] = new Casella(i, Color.NEGRE);
             i++;
             if (i <= 18) {
-                this.caselles[i] = new Casella(i, "Red");
+                this.caselles[i] = new Casella(i, Color.VERMELL);
                 i++;
             }
         } while (i <= 18);
         do {
-            this.caselles[i] = new Casella(i, "Red");
+            this.caselles[i] = new Casella(i, Color.VERMELL);
             i++;
             if (i <= 28) {
-                this.caselles[i] = new Casella(i, "Black");
+                this.caselles[i] = new Casella(i, Color.NEGRE);
                 i++;
             }
         } while (i <= 28);
         do {
-            this.caselles[i] = new Casella(i, "Black");
+            this.caselles[i] = new Casella(i, Color.NEGRE);
             i++;
             if (i <= 36) {
-                this.caselles[i] = new Casella(i, "Red");
+                this.caselles[i] = new Casella(i, Color.VERMELL);
                 i++;
             }
         } while (i <= 36);
@@ -93,7 +94,7 @@ public class Tauler {
         switch (selectOpcio) {
             //Cas de aposta a número
             case 1:
-                int num;
+                int num = -1;
                 aux = 0;
                 do {
                     if (aux > 0) {
@@ -103,7 +104,7 @@ public class Tauler {
                     try{
                         num = n.nextInt();
                     }catch (InputMismatchException e){
-                        throw new InputMismatchException();
+                        JOptionPane.showMessageDialog(null, "Error: Introdueix un numero valid (0-36)");
                     }
 
                     aux++;
@@ -122,7 +123,7 @@ public class Tauler {
                     }
 
                     aux++;
-                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                } while (quantitat >= player.getMoney() || quantitat <= 0);
 
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
 
@@ -168,7 +169,7 @@ public class Tauler {
                         throw new InputMismatchException();
                     }
                     aux++;
-                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                } while (quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                 if (dotzena == compararDotzena(this.getCaselles()[tirada].getNum())) {
                     System.out.println("Has guanyat " + quantitat*3 + "€");
@@ -207,7 +208,7 @@ public class Tauler {
                         throw new InputMismatchException();
                     }
                     aux++;
-                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                } while (quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                 if (this.getCaselles()[tirada].getColor().toLowerCase().equals(color)){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
@@ -251,7 +252,7 @@ public class Tauler {
                         throw new InputMismatchException();
                     }
                     aux++;
-                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                } while (quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                 if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum())==eleccio){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
@@ -296,7 +297,7 @@ public class Tauler {
                         throw new InputMismatchException();
                     }
                     aux++;
-                } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
+                } while (quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                 if (this.compararParell(this.getCaselles()[tirada].getNum())==eleccio2){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
