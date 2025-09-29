@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Grafic {
     private JFrame frame;
-    ;
+
     private JTextField txtResum;
 
     private boolean apostaAmount;
