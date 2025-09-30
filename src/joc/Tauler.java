@@ -1,5 +1,6 @@
 package joc;
 
+import joc.Color;
 import jugador.Jugador;
 
 import java.util.Arrays;
@@ -13,37 +14,36 @@ public class Tauler {
     public Tauler() {
         int i = 1;
         this.caselles = new Casella[37];
-        this.caselles[0] = new Casella(0, "Green");
+        this.caselles[0] = new Casella(0, Color.VERD);
         do {
-
-            this.caselles[i] = new Casella(i, "Red");
+            this.caselles[i] = new Casella(i, Color.VERMELL);
             i++;
             if (i <= 10) {
-                this.caselles[i] = new Casella(i, "Black");
+                this.caselles[i] = new Casella(i, Color.NEGRE);
                 i++;
             }
         } while (i <= 10);
         do {
-            this.caselles[i] = new Casella(i, "Black");
+            this.caselles[i] = new Casella(i, Color.NEGRE);
             i++;
             if (i <= 18) {
-                this.caselles[i] = new Casella(i, "Red");
+                this.caselles[i] = new Casella(i, Color.VERMELL);
                 i++;
             }
         } while (i <= 18);
         do {
-            this.caselles[i] = new Casella(i, "Red");
+            this.caselles[i] = new Casella(i, Color.VERMELL);
             i++;
             if (i <= 28) {
-                this.caselles[i] = new Casella(i, "Black");
+                this.caselles[i] = new Casella(i, Color.NEGRE);
                 i++;
             }
         } while (i <= 28);
         do {
-            this.caselles[i] = new Casella(i, "Black");
+            this.caselles[i] = new Casella(i, Color.NEGRE);
             i++;
             if (i <= 36) {
-                this.caselles[i] = new Casella(i, "Red");
+                this.caselles[i] = new Casella(i, Color.VERMELL);
                 i++;
             }
         } while (i <= 36);
@@ -182,16 +182,21 @@ public class Tauler {
                 break;
 
             case 3:
-                String color;
+                Color color = null;
                 aux = 0;
                 do {
                     if (aux > 0) {
-                        System.out.println("Introdueix un color disponible (Red/Black)");
+                        System.out.println("Introdueix un color disponible (Vermell/Negre)");
                     }
-                    System.out.println("Introdueix a que apostes: Red/Black");
-                    color = n.next().toLowerCase();
+                    System.out.println("Introdueix a que apostes: Vermell/Negre");
+                    String colorInput = n.next().toLowerCase();
+                    if (colorInput.equals("vermell")) {
+                        color = Color.VERMELL;
+                    } else if (colorInput.equals("negre")) {
+                        color = Color.NEGRE;
+                    }
                     aux++;
-                } while (!color.equals("black") && !color.equals("red"));
+                } while (color == null);
 
                 aux = 0;
                 do {
@@ -208,7 +213,7 @@ public class Tauler {
                     aux++;
                 } while ((double) quantitat >= player.getMoney() || quantitat <= 0);
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
-                if (this.getCaselles()[tirada].getColor().toLowerCase().equals(color)){
+                if (this.getCaselles()[tirada].getColor() == color){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
                     player.setMoney(player.getMoney()+quantitat);
                     System.out.println("Ara tens " + player.getMoney() + "€");
@@ -307,7 +312,7 @@ public class Tauler {
                     System.out.println("Ara tens " + player.getMoney() + "€");
                 }
                 break;
-            // Seguir el tipo de apuesta (parell o imparell)
+            // Seguir el tipo de aposta (parell o imparell)
         }
 
 
