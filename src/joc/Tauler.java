@@ -12,41 +12,25 @@ public class Tauler {
     private Casella[] caselles;
 
     public Tauler() {
-        int i = 1;
         this.caselles = new Casella[37];
+        // El 0 es VERD
         this.caselles[0] = new Casella(0, Color.VERD);
-        do {
-            this.caselles[i] = new Casella(i, Color.VERMELL);
-            i++;
-            if (i <= 10) {
-                this.caselles[i] = new Casella(i, Color.NEGRE);
-                i++;
+
+        // Números rojos estándar de la ruleta europea
+        int[] vermell = {1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36};
+
+        for (int i = 1; i <= 36; i++) {
+            Color color;
+            boolean esVermell = false;
+            for (int r : vermell) {
+                if (i == r) {
+                    esVermell = true;
+                    break;
+                }
             }
-        } while (i <= 10);
-        do {
-            this.caselles[i] = new Casella(i, Color.NEGRE);
-            i++;
-            if (i <= 18) {
-                this.caselles[i] = new Casella(i, Color.VERMELL);
-                i++;
-            }
-        } while (i <= 18);
-        do {
-            this.caselles[i] = new Casella(i, Color.VERMELL);
-            i++;
-            if (i <= 28) {
-                this.caselles[i] = new Casella(i, Color.NEGRE);
-                i++;
-            }
-        } while (i <= 28);
-        do {
-            this.caselles[i] = new Casella(i, Color.NEGRE);
-            i++;
-            if (i <= 36) {
-                this.caselles[i] = new Casella(i, Color.VERMELL);
-                i++;
-            }
-        } while (i <= 36);
+            color = esVermell ? Color.VERMELL : Color.NEGRE;
+            this.caselles[i] = new Casella(i, color);
+        }
     }
 
     public Casella[] getCaselles() {
