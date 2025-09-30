@@ -102,7 +102,7 @@ public class Tauler {
                     int num = -1;
                     aux = 0;
 
-                    boolean fin = false;
+/*                    boolean fin = false;
                     while (!fin){
                         System.out.println("A quin número apostes:");
                         try {
@@ -113,8 +113,8 @@ public class Tauler {
                             n = new Scanner(System.in);
                             System.out.println("Error");
                         }
-                    }
-                    /*do {
+                    }*/
+                    do {
                         if (aux > 0) {
                             System.out.println("Introdueix un numero VALID (0-36)");
                         }
@@ -122,12 +122,12 @@ public class Tauler {
                         try {
                             num = n.nextInt();
                         } catch (InputMismatchException e) {
-                            aux = 38;
-                            JOptionPane.showMessageDialog(null, "Error: Introdueix un numero valid (0-36)");
+                            n = new Scanner(System.in);
+                            System.out.println("Error");
                         }
 
                         aux++;
-                    } while (num >36 || num < 0);*/
+                    } while (num >36 || num < 0);
                     aux = 0;
                     do {
                         System.out.println("Tens " + player.getMoney() + "€");
@@ -142,7 +142,7 @@ public class Tauler {
                         }
 
                         aux++;
-                    } while (quantitat >= player.getMoney() || quantitat <= 0);
+                    } while (quantitat > player.getMoney() || quantitat <= 0);
 
                     System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
 
@@ -188,7 +188,7 @@ public class Tauler {
                             throw new InputMismatchException();
                         }
                         aux++;
-                    } while (quantitat >= player.getMoney() || quantitat <= 0);
+                    } while (quantitat > player.getMoney() || quantitat <= 0);
                     System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                     if (dotzena == compararDotzena(this.getCaselles()[tirada].getNum())) {
                         System.out.println("Has guanyat " + quantitat * 3 + "€");
@@ -330,8 +330,14 @@ public class Tauler {
                     break;
 
             }
-            System.out.println("Si vols parar de jugar introdueix el número -1");
-            seguir = n.nextInt();
+            if (player.getMoney()==0){
+                System.out.println("T'has quedat sense diners, acabant la partida... ");
+                seguir=-1;
+            }else {
+                System.out.println("Si vols parar de jugar introdueix el número -1");
+                seguir = n.nextInt();
+            }
+
         }
     }
 

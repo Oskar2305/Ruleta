@@ -10,7 +10,7 @@ public class Main {
         try {
             n.bet();
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Ha hagut un error");
+            System.out.println("Ha hagut un error");
         }
     }
 }
