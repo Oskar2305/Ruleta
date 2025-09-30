@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Tauler {
     Jugador player = new Jugador("Nombre ejemplo");
-    private Casella[] caselles;
+    private final Casella[] caselles;
 
     public Tauler() {
         this.caselles = new Casella[37];
@@ -103,29 +103,32 @@ public class Tauler {
 
                 //Aposta a dotzenes
             case 2:
-                int dotzena;
+                int dotzena = 0;
                 aux = 0;
+                System.out.println("1. 1-12");
+                System.out.println("2. 13-24");
+                System.out.println("3. 25-36");
                 do {
+                    try {
                     if (aux > 0) {
                         System.out.println("Introdueix un numero VALID (1-3)");
                     }
                     System.out.println("Introdueix un número del 1-3, apostes a quina dotzena:");
-                    System.out.println("1. 1-12");
-                    System.out.println("2. 13-24");
-                    System.out.println("3. 25-36");
-                    try{
-                        dotzena = n.nextInt();
-                    }catch (InputMismatchException e){
-                        throw new InputMismatchException();
+
+                    dotzena = n.nextInt();
+                    } catch (InputMismatchException e){
+                        JOptionPane.showMessageDialog(null, "Error, has d'introduir un numero", "Error", JOptionPane.ERROR_MESSAGE);
                     }
 
                     aux++;
                 } while (dotzena > 3 || dotzena <= 0);
 
+                quantitat = aposta();
+
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
                 if (dotzena == compararDotzena(this.getCaselles()[tirada].getNum())) {
                     System.out.println("Has guanyat " + quantitat * 3 + "€");
-                    player.setMoney(player.getMoney() + quantitat * 2);
+                    player.setMoney(player.getMoney() + quantitat * 3);
                     System.out.println("Ara tens: " + player.getMoney() + "€");
                 } else {
                     System.out.println("Has perdut " + quantitat + "€");
