@@ -1,6 +1,5 @@
 package joc;
 
-import joc.Color;
 import jugador.Jugador;
 
 import javax.swing.*;
@@ -357,7 +356,7 @@ public class Tauler {
 
     @Override
     public String toString() {
-        return "Tauler{" +
+        return "Tauler {" +
                 "caselles=" + Arrays.toString(caselles) +
                 '}';
     }
