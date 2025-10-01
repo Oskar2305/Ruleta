@@ -14,9 +14,7 @@ public class Jugades {
             if (numCasella % 2 == 0) {
                 return 2;
             }
-            if (numCasella % 2 != 0) {
-                return 1;
-            }
+            return 1;
         }
 
         return 0;
