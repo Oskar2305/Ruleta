@@ -1,12 +1,15 @@
 package joc;
 
 import jugador.Jugador;
+import joc.Jugades;
 
 import javax.swing.*;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.Random;
 import java.util.Scanner;
+
+import static joc.Jugades.*;
 
 public class Tauler {
 
@@ -225,7 +228,7 @@ public class Tauler {
 
                 quantitat = aposta();
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
-                if (this.compararParell(this.getCaselles()[tirada].getNum())==eleccio2){
+                if (jugaParell(this.getCaselles()[tirada].getNum())==eleccio2){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
                     player.setMoney(player.getMoney()+quantitat);
                     System.out.println("Ara tens " + player.getMoney() + "€");
@@ -240,26 +243,6 @@ public class Tauler {
                 System.out.println("Error, valor no valid");
                 break;
         }
-    }
-
-
-    public int compararParell(int numCasella){
-        int parells=0;
-        if (numCasella!=0){
-            for (int i = 1 ; i <= 36; i++){
-                if (numCasella%2==0){
-                    parells = 2;
-                    return parells;
-                }
-                if (numCasella%2!=0){
-                    parells = 1;
-                    return parells;
-                }
-            }
-        }
-
-
-        return parells;
     }
 
     public int compararMenorOMajor(int numCasella){
