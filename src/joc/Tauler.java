@@ -25,8 +25,8 @@ public class Tauler {
         for (int i = 1; i <= 36; i++) {
             Color color;
             boolean esVermell = false;
-            for (int r : vermell) {
-                if (i == r) {
+            for (int v : vermell) {
+                if (i == v) {
                     esVermell = true;
                     break;
                 }
