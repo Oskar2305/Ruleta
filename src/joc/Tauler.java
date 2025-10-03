@@ -11,11 +11,42 @@ import java.util.Scanner;
 
 import static joc.Jugades.*;
 
+/**
+ * Classe que representa el tauler de la ruleta
+ * Conté les caselles i els mètodes per jugar a la ruleta
+ * @author Oscar Rojas
+ * @author Alex Potlog
+ * @version 1.0
+ * @see Casella
+ * @see Color
+ * @see Jugador
+ */
+
 public class Tauler {
 
+    /**
+     * Generador de nombres aleatoris per simular la tirada de la ruleta
+     * @see Random
+     */
+
     private final Random r = new Random();
-    Jugador player = new Jugador("Nombre ejemplo");
+
+    /**
+     * Jugador que juga a la ruleta
+     * @see Jugador
+     */
+    Jugador player;
+
+    /**
+     * Array de caselles que representa el tauler de la ruleta
+     * @see Casella
+     */
     private final Casella[] caselles;
+
+    /**
+     * Constructor de la classe Tauler
+     * Inicialitza les caselles amb els números i colors corresponents
+     */
 
     public Tauler() {
         this.caselles = new Casella[37];
@@ -39,12 +70,22 @@ public class Tauler {
         }
     }
 
+    /**
+     * Getter de les caselles
+     * @return Array de caselles
+     */
+
     public Casella[] getCaselles() {
         return caselles;
     }
 
-    /*Metode utilitzat al main per jugar*/
-    public void bet() {
+    /**
+     * Setter del jugador
+     * @param player Jugador que juga a la ruleta
+     */
+
+    public void bet(Jugador player) {
+        this.player = player;
         Scanner n = new Scanner(System.in);
         int selectOpcio = 0;
         int aux = 0;
@@ -70,10 +111,10 @@ public class Tauler {
         /*Quantitat ha apostar*/
 
         double quantitat = 0;
-        //Totes les opcions de aposta (a numero, dotzena, etc)
 
+        int tirada = r.nextInt(36); // Tirada de la ruleta (número aleatori entre 0 i 36)
 
-        int tirada = r.nextInt(36);
+        // Selecció de la opció d'aposta
 
         switch (selectOpcio) {
             //Cas de aposta a número
@@ -143,7 +184,7 @@ public class Tauler {
 
                 }
                 break;
-
+                // Aposta a color
             case 3:
                 Color color = null;
                 aux = 0;
@@ -174,6 +215,7 @@ public class Tauler {
                     System.out.println("Ara tens " + player.getMoney() + "€");
                 }
                 break;
+                // Seguir el tipo de aposta (menor o major)
 
             case 4:
                 int eleccio;
@@ -196,7 +238,7 @@ public class Tauler {
                 quantitat = aposta();
 
                 System.out.println("La bola ha caigut a " + this.getCaselles()[tirada]);
-                if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum())==eleccio){
+                if (this.compararMenorOMajor(this.getCaselles()[tirada].getNum(), tirada)==eleccio){
                     System.out.println("Has guanyat " + quantitat*2 + "€");
                     player.setMoney(player.getMoney()+quantitat);
                     System.out.println("Ara tens " + player.getMoney() + "€");
@@ -207,6 +249,7 @@ public class Tauler {
                 }
                 break;
 
+                // Seguir el tipo de aposta (parell o imparell)
             case 5:
                 int eleccio2 = 0;
                 aux = 0;
@@ -245,21 +288,16 @@ public class Tauler {
         }
     }
 
-    public int compararMenorOMajor(int numCasella){
-        int menorOMajor=0;
-        for (int i = 1; i <= 18; i++) {
-            if (numCasella == i) {
-                menorOMajor = 1;
-                return menorOMajor;
-            }
+    /**
+     * Compara si el número està entre 1-18 o 19-36
+     * @param numCasella Número a comparar
+     * @return 1 si està entre 1-18, 2 si està entre 19-36, 0 si és 0
+     */
+    public int compararMenorOMajor(int numCasella, int tirada){
+        if (tirada == 0){
+            return 0;
         }
-        for (int i = 19; i <= 36; i++) {
-            if (numCasella == i) {
-                menorOMajor = 2;
-                return menorOMajor;
-            }
-        }
-        return menorOMajor;
+        return ((tirada > 18 && numCasella == 2) || (tirada < 19 && numCasella == 1)) ? 2 : 1;
     }
 
     public int compararDotzena(int numCasella) {

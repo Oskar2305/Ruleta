@@ -3,6 +3,7 @@ package main;
 import jugador.Jugador;
 import joc.Tauler;
 
+import javax.swing.*;
 import java.util.Scanner;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -12,16 +13,14 @@ public class Main {
         Scanner t = new Scanner(System.in);
         Tauler n = new Tauler();
         Jugador player = new Jugador("Nombre ejemplo");
-        int aux=0;
         boolean continuar=true;
         while(continuar){
             System.out.println("Tens "+ player.getMoney()+" €");
             try {
-                n.bet();
+                n.bet(player);
             } catch (Exception e) {
-                //TODO: manejar excepciones
+                JOptionPane.showMessageDialog(null, e.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
             }
-            aux++;
             System.out.println("Vols parar de jugar?");
             System.out.println("Introdueix un \"1\" si introdueixes cualsevol altre cosa seguiras jugant");
             int conf = t.nextInt();
