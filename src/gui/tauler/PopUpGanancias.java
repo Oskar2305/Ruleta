@@ -1,5 +1,10 @@
 package gui.tauler;
 
-public class PopUpGanancias {
+import javax.swing.*;
 
+public class PopUpGanancias {
+    private JFrame frame;
+    public PopUpGanancias(){
+        frame = new JFrame();
+    }
 }
