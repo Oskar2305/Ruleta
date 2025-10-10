@@ -7,4 +7,12 @@ public class PopUpGanancias {
     public PopUpGanancias(){
         frame = new JFrame();
     }
+
+    public JFrame getFrame() {
+        return frame;
+    }
+
+    public void setFrame(JFrame frame) {
+        this.frame = frame;
+    }
 }
